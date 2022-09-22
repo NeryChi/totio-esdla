@@ -2,10 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+import Tablero from "./tablero";
+
+const Totito = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div classNamee="container mx-auto ">
+      <div className="sm:grid grid-cols-2 w-screen h-screen bg-blue-400">
+        <Tablero className="m-5 p-2"/>
+      </div>
+    </div>
   )
 }
+
+export default Totito
