@@ -16,9 +16,7 @@ const Totito = () => {
         <Tablero className="m-5 p-2"/>
 
         {/*Seccion pendiente... */}
-        <div className="flex justify-center">
-          <h1 className="mt-5 text-4xl font-bold text-white">TOTITO</h1>
-        </div>
+
       </div>
     </div>
   )
