@@ -5,8 +5,8 @@ const colorOriginal = "select-none shadow-lg shadow-gray-500  active:shadow-gray
 const colorError = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 "
 
 const Tablero = () => {
-  const [cuadros, setCuadros] = useState(Array(9).fill(''))
-  const [turno, setTurno] = useState('X')
+  const [cuadros, setCuadros] = useState(Array(9).fill([]))
+  const [turno, setTurno] = useState(<img className="w-1/2 z-0" id="Torre de Mordor" src="../img/torre.png" />)
 
   //Utilizo el Hook useRef() para tener un control del estilo de mis componenetes directamente desde el Dom 
   //sin afectar a mis demas componentes. El parametro que se le pasa es en forma de arreglo porque necesito
@@ -26,14 +26,18 @@ const Tablero = () => {
     }
 
     if(cuadros[indexItem] != ''){
+
       cuadroRef.current[indexItem].className = colorError
       
     } else{
       setCuadros(misCuadritos)
-      if(turno === 'X'){
-        setTurno('O')
+      let actual = turno.props?.src
+      if(actual === "../img/torre.png"){
+        console.log("entra")
+        setTurno(<img className="w-1/2 z-0" id="Rohan" src="../img/rohan.png" />)
       } else{
-        setTurno('X')
+        console.log("no entra")
+        setTurno(<img className="w-1/2 z-0" id="Torre de Mordor" src="../img/torre.png" />)
       }
     }
   }
@@ -52,9 +56,10 @@ const Tablero = () => {
 
     for(let indiceJugada = 0; indiceJugada < jugadasGanadoras.length; indiceJugada++){
       const [a, b, c] = jugadasGanadoras[indiceJugada];
-      if(myTablero[a] && myTablero[a] === myTablero[b] && myTablero[a] === myTablero[c]){
-
-        return myTablero[a];
+      
+      if(myTablero[a].props?.src && myTablero[a].props?.src === myTablero[b].props?.src && myTablero[a].props?.src === myTablero[c].props?.src){
+        console.log(myTablero[a].props?.src)
+        return myTablero[a].props?.id;
       }
     }
     return ""
@@ -84,9 +89,14 @@ const Tablero = () => {
         })
       }
       </div>
-      <div className="">
-        <h1 className="mt-5 text-4xl font-bold text-white flex justify-center">TOTITO</h1>
-        <span className="ml-5 mt-16 text-2xl font-bold flex text-white">{'El ganador es: ' + calcularGanador(cuadros)}</span>
+      <div className="w-full flex">
+        <div className="w-full z-10">
+          <h1 className="w-full text-center mt-5 text-3xl md:text-4xl font-bold text-white">TOTITO <br/>The Lord Of The Rings</h1>
+          <br/>
+          <br/>
+          <span className="ml-5 text-xl md:text-2xl font-bold text-white">{'El ganador es: ' + calcularGanador(cuadros)}</span>
+        </div>
+        <img className="h-full w-full md:w-1/2 md:h-screen object-cover absolute z-0" src="../img/lotr.jpg" />
       </div>
     </>
     

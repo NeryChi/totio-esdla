@@ -15,8 +15,6 @@ const Totito = () => {
         {/*Se llama al componente Tablero */}
         <Tablero className="m-5 p-2" />
 
-        {/*Seccion pendiente... */}
-
       </div>
     </div>
   )
