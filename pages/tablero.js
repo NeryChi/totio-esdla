@@ -1,12 +1,16 @@
 import { useState, useRef } from "react"
 import Cuadro from "./cuadro"
+import Jugador from "./jugador"
 
 const colorOriginal = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-indigo-700 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 const colorError = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 "
 
+let jugador1 = "Mordor"
+let jugador2 = "Gondor"
+
 const Tablero = () => {
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
-  const [turno, setTurno] = useState(<img className="w-1/2 z-0" id="Torre de Mordor" src="../img/torre.png" />)
+  const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
 
   //Utilizo el Hook useRef() para tener un control del estilo de mis componenetes directamente desde el Dom 
   //sin afectar a mis demas componentes. El parametro que se le pasa es en forma de arreglo porque necesito
@@ -31,14 +35,13 @@ const Tablero = () => {
       
     } else{
       setCuadros(misCuadritos)
-      
-  
-      if(turno.props?.id === cuadros[indexAnt]?.props?.id){
-        setTurno(<img className="w-1/2 z-0" id="Rohan" src="../img/rohan.png" />)
+
+      if(turno.props?.jugador === jugador2){
+        setTurno(<Jugador jugador = {jugador1} />)
         
       } else{
-        setTurno(<img className="w-1/2 z-0" id="Torre de Mordor" src="../img/torre.png" />)
-        
+        setTurno(<Jugador jugador = {jugador2} />)
+
       }
     }
   }
@@ -58,8 +61,8 @@ const Tablero = () => {
     for(let indiceJugada = 0; indiceJugada < jugadasGanadoras.length; indiceJugada++){
       const [a, b, c] = jugadasGanadoras[indiceJugada];
       
-      if(myTablero[a].props?.src && myTablero[a].props?.src === myTablero[b].props?.src && myTablero[a].props?.src === myTablero[c].props?.src){
-        return myTablero[a].props?.id;
+      if(myTablero[a].props?.jugador && myTablero[a].props?.jugador === myTablero[b].props?.jugador && myTablero[a].props?.jugador === myTablero[c].props?.jugador){
+        return myTablero[a].props?.jugador;
       }
     }
     return ""
