@@ -31,13 +31,14 @@ const Tablero = () => {
       
     } else{
       setCuadros(misCuadritos)
-      let actual = turno.props?.src
-      if(actual === "../img/torre.png"){
-        console.log("entra")
+      
+  
+      if(turno.props?.id === cuadros[indexAnt]?.props?.id){
         setTurno(<img className="w-1/2 z-0" id="Rohan" src="../img/rohan.png" />)
+        
       } else{
-        console.log("no entra")
         setTurno(<img className="w-1/2 z-0" id="Torre de Mordor" src="../img/torre.png" />)
+        
       }
     }
   }
@@ -58,7 +59,6 @@ const Tablero = () => {
       const [a, b, c] = jugadasGanadoras[indiceJugada];
       
       if(myTablero[a].props?.src && myTablero[a].props?.src === myTablero[b].props?.src && myTablero[a].props?.src === myTablero[c].props?.src){
-        console.log(myTablero[a].props?.src)
         return myTablero[a].props?.id;
       }
     }
