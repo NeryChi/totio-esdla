@@ -1,0 +1,21 @@
+const Ganador = ({ganador}) => {
+
+  let componenteGana
+
+    if(ganador != ''){
+      componenteGana=  <div className="grid grid-cols-1 justify-items-center content-around h-screen w-full sm:w-1/2 bg-gray-900 opacity-95 absolute z-20">
+              <span className="text-5xl text-white font-bold ">{ganador}</span>
+              <div className="w-full h-full bg-red-900">
+                <button className="bg-white py-2 w-2/5 rounded-md text-2xl font-bold ">Reiniciar</button> 
+              </div>
+            </div>
+    }
+
+  return(
+    <>
+      {componenteGana}
+    </>
+  )
+}
+
+export default Ganador

@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
 import Ejercitos from "./ejercitos"
+import Ganador from "./ganador"
 
 const colorOriginal = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-indigo-700 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 const colorError = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 "
@@ -63,7 +64,7 @@ const Tablero = () => {
       const [a, b, c] = jugadasGanadoras[indiceJugada];
       
       if(myTablero[a].props?.jugador && myTablero[a].props?.jugador === myTablero[b].props?.jugador && myTablero[a].props?.jugador === myTablero[c].props?.jugador){
-        return myTablero[a].props?.jugador;
+        return "¡" + myTablero[a].props?.jugador +" Gana!";
       }
     }
     return ""
@@ -80,7 +81,7 @@ const Tablero = () => {
 
   return (
     <>
-      <div className="p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 sm:h-screen">{/*Tablero responsivo */}
+      <div className="sm:h-screen p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 ">{/*Tablero responsivo */}
       {
         cuadros.map((item, indexItem) => {
           return <Cuadro key={indexItem} 
@@ -105,9 +106,10 @@ const Tablero = () => {
           </div>
           <br/>
           <br/>
-          <span className="ml-5 text-xl md:text-2xl font-bold text-white">{'El ganador es: ' + calcularGanador(cuadros)}</span>
+          
         </div>
-        <img className="h-full w-full md:w-1/2 md:h-screen object-cover absolute z-0" src="../img/lotr.jpg" />
+        <img className="h-full w-full sm:w-1/2 md:h-screen object-cover absolute z-0" src="../img/lotr.jpg" />
+        <Ganador ganador = {calcularGanador(cuadros)} />
       </div>
     </>
     
