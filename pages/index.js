@@ -21,7 +21,13 @@ const Totito = () => {
   }
 
   const cambioInterfaz = () => {
-    setInterfaz(<Tablero jugador1={jugador1} jugador2={jugador2} />)
+
+    if(jugador1 != '' && jugador2 != ''){
+      setInterfaz(<Tablero jugador1={jugador1} jugador2={jugador2} />)
+    } else{
+      alert('Elige a tus ejercitos')
+    }
+    
   }
 
   return (

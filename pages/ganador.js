@@ -5,7 +5,7 @@ const Ganador = ({ganador}) => {
   let componenteGana
 
     if(ganador != ''){
-      componenteGana=   <div className="grid grid-cols-1 justify-items-center content-around h-screen w-full sm:w-1/2 bg-gray-900 opacity-95 absolute z-20">
+      componenteGana=   <div className="grid grid-cols-1 justify-items-center content-around h-full w-full sm:w-1/2 bg-gray-900 opacity-95 absolute z-20">
                           <span className="text-5xl text-white font-bold ">{`¡${ganador} Gana!`}</span>
                           <div className="flex justify-center w-3/4">
                               <Jugador jugador={ganador} />

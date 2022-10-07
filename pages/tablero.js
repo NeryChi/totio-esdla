@@ -62,6 +62,7 @@ const Tablero = ({jugador1, jugador2}) => {
         document.getElementById(a).className = colorGanador
         document.getElementById(b).className = colorGanador
         document.getElementById(c).className = colorGanador
+        document.getElementById("tablero").className = "sm:h-screen w-full p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 pointer-events-none "
         
         return myTablero[a].props?.jugador;
       }
@@ -80,7 +81,7 @@ const Tablero = ({jugador1, jugador2}) => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
-      <div className="sm:h-screen w-full p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 ">{/*Tablero responsivo */}
+      <div id="tablero" className="sm:h-screen w-full p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 ">{/*Tablero responsivo */}
       {
         cuadros.map((item, indexItem) => {
           return <Cuadro key={indexItem} 
@@ -97,11 +98,13 @@ const Tablero = ({jugador1, jugador2}) => {
           <h1 className="w-full text-center mt-5 text-3xl md:text-4xl font-bold text-white">TOTITO <br/>The Lord Of The Rings</h1>
           <br/>
           <br/>
-          <div className="grid grid-cols-2 gap-2">
-            <h1 className="ml-5 text-white font-bold text-2xl">Jugador 1</h1>
-            <h1 className="ml-5 text-white font-bold text-2xl">Jugador 2</h1>
-            <h1 className="ml-5 text-white font-bold text-2xl">{jugador1}</h1>
-            <h1 className="ml-5 text-white font-bold text-2xl">{jugador2}</h1>
+          <div className="grid grid-cols-2 gap-5 justify-items-center">
+            <h1 className="text-white font-bold text-2xl">Jugador 1</h1>
+            <h1 className="text-white font-bold text-2xl">Jugador 2</h1>
+            <Jugador jugador={jugador1} />
+            <Jugador jugador={jugador2} />
+            <h1 className="text-white font-bold italic text-xl">{jugador1}</h1>
+            <h1 className="text-white font-bold italic text-xl">{jugador2}</h1>
           </div>
           <br/>
           <br/>
