@@ -1,18 +1,15 @@
 import { useState, useRef } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
-import Ejercitos from "./ejercitos"
 import Ganador from "./ganador"
 
-const ejercitos = ['Rohan', 'Gondor', 'Mordor', 'Isengard']
+let prueba = 1
 
 const colorOriginal = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-indigo-700 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 const colorError = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 "
+const colorGanador = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 "
 
-let jugador1 = ''
-let jugador2 = ''
-
-const Tablero = () => {
+const Tablero = ({jugador1, jugador2}) => {
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
 
@@ -34,20 +31,13 @@ const Tablero = () => {
     }
 
     if(cuadros[indexItem] != ''){
-
       cuadroRef.current[indexItem].className = colorError
-      
     } else{
       setCuadros(misCuadritos)
-
       if(turno.props?.jugador === jugador2){
-        jugador1 = document.getElementById('ejercitosUno').value
         setTurno(<Jugador jugador = {jugador1} />)
-        
       } else{
-        jugador2 = document.getElementById('ejercitosDos').value
         setTurno(<Jugador jugador = {jugador2} />)
-
       }
     }
   }
@@ -68,6 +58,11 @@ const Tablero = () => {
       const [a, b, c] = jugadasGanadoras[indiceJugada];
       
       if(myTablero[a].props?.jugador && myTablero[a].props?.jugador === myTablero[b].props?.jugador && myTablero[a].props?.jugador === myTablero[c].props?.jugador){
+
+        document.getElementById(a).className = colorGanador
+        document.getElementById(b).className = colorGanador
+        document.getElementById(c).className = colorGanador
+        
         return myTablero[a].props?.jugador;
       }
     }
@@ -84,7 +79,7 @@ const Tablero = () => {
   }
 
   return (
-    <>
+    <div className="grid grid-cols-1 sm:grid-cols-2">
       <div className="sm:h-screen w-full p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 ">{/*Tablero responsivo */}
       {
         cuadros.map((item, indexItem) => {
@@ -104,11 +99,9 @@ const Tablero = () => {
           <br/>
           <div className="grid grid-cols-2 gap-2">
             <h1 className="ml-5 text-white font-bold text-2xl">Jugador 1</h1>
-            <Ejercitos  ejercitos = {ejercitos} 
-                        index="ejercitosUno" />
             <h1 className="ml-5 text-white font-bold text-2xl">Jugador 2</h1>
-            <Ejercitos  ejercitos = {ejercitos} 
-                        index="ejercitosDos" />
+            <h1 className="ml-5 text-white font-bold text-2xl">{jugador1}</h1>
+            <h1 className="ml-5 text-white font-bold text-2xl">{jugador2}</h1>
           </div>
           <br/>
           <br/>
@@ -116,7 +109,7 @@ const Tablero = () => {
         <img className="h-full w-full sm:w-1/2 sm:h-screen object-cover absolute z-0" src="../img/lotr.jpg" />
         <Ganador ganador = {calcularGanador(cuadros)} />
       </div>
-    </>
+    </div>
     
   )
 }
