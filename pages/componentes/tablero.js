@@ -1,15 +1,15 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
 import Ganador from "./ganador"
-
-let prueba = 1
+import { usarContexto } from './Context/valorJugadores';
 
 const colorOriginal = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-indigo-700 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
 const colorError = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 "
 const colorGanador = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 "
 
-const Tablero = ({jugador1, jugador2}) => {
+const Tablero = () => {
+  const [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
 
@@ -95,19 +95,16 @@ const Tablero = ({jugador1, jugador2}) => {
       </div>
       <div className="w-full flex">
         <div className="w-full z-10">
-          <h1 className="w-full text-center mt-5 text-3xl md:text-4xl font-bold text-white">TOTITO <br/>The Lord Of The Rings</h1>
-          <br/>
-          <br/>
-          <div className="grid grid-cols-2 gap-5 justify-items-center">
-            <h1 className="text-white font-bold text-2xl">Jugador 1</h1>
-            <h1 className="text-white font-bold text-2xl">Jugador 2</h1>
+          <h1 className="mt-[10%] md:mt-[5%] lg:mt-[5%] w-full text-center mt-5 text-2xl md:text-xl lg:text-3xl font-bold font-ringbearer text-white">TOTITO</h1>
+          <h1 className="w-full text-center mt-5 text-3xl lg:text-5xl font-bold font-ringbearer text-white">The Lord Of The Rings</h1>
+          <div className="mt-[15%] md:mt-[10%] lg:mt-[20%] grid grid-cols-2 gap-5 justify-items-center">
+            <h1 className="text-white font-bold font-aniron text-[100%] lg:text-2xl">Jugador 1</h1>
+            <h1 className="text-white font-bold font-aniron text-[100%] lg:text-2xl">Jugador 2</h1>
             <Jugador jugador={jugador1} />
             <Jugador jugador={jugador2} />
-            <h1 className="text-white font-bold italic text-xl">{jugador1}</h1>
-            <h1 className="text-white font-bold italic text-xl">{jugador2}</h1>
+            <h1 className="text-white font-bold italic text-[100%]">{jugador1}</h1>
+            <h1 className="text-white font-bold italic text-[100%]">{jugador2}</h1>
           </div>
-          <br/>
-          <br/>
         </div>
         <img className="h-full w-full sm:w-1/2 sm:h-screen object-cover absolute z-0" src="../img/lotr.jpg" />
         <Ganador ganador = {calcularGanador(cuadros)} />
