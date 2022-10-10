@@ -4,8 +4,8 @@ import styles from '../styles/Home.module.css'
 
 /*Se importan los componentes y Hooks necesarios*/
 import { useState } from 'react';
-import Tablero from "./tablero";
-import Eleccion from './eleccion';
+import Tablero from "./componentes/tablero";
+import Eleccion from './componentes/eleccion';
 
 let jugador1
 let jugador2

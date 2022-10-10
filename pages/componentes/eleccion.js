@@ -18,7 +18,7 @@ const Eleccion = ({cambioInterfaz, cambioJugador}) => {
         <Ejercitos  ejercitos = {ejercitos} 
                     index="ejercitosDos" />
     </div>
-    <button onMouseOver={() => cambioJugador()} onClick={() => cambioInterfaz()} className='grid col-span-2 flex justify-center bg-white py-2 w-2/5 rounded-md text-2xl font-bold'>Jugar</button>
+    <button onMouseOver={() => cambioJugador()} onClick={() => cambioInterfaz()} className='grid col-span-2 flex justify-center bg-white py-2 w-[25%] rounded-md text-2xl font-bold'>Jugar</button>
 </div>
 </div>
   )
