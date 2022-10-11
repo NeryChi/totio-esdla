@@ -14,7 +14,9 @@ const Totito = () => {
   const[interfaz, setInterfaz] = useState(<Eleccion cambioInterfaz={() => cambioInterfaz()} />)
 
   const cambioInterfaz = () => {
-    setInterfaz(<Tablero />)
+    let fondos = ['lotr1', 'lotr2', 'lotr3', 'lotr4', 'lotr5', 'lotr6']
+    let rand = Math.floor(Math.random()*fondos.length)
+    setInterfaz(<Tablero fondo = { fondos[rand] } />)
   }
 
   return (

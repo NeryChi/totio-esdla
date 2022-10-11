@@ -4,11 +4,12 @@ import Jugador from "./jugador"
 import Ganador from "./ganador"
 import { usarContexto } from './Context/valorJugadores';
 
-const colorOriginal = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-indigo-700 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-const colorError = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-red-600 rounded-md hover:bg-red-500 "
-const colorGanador = "select-none shadow-lg shadow-gray-500  active:shadow-gray-900 active:shadow-inner active:bg-red-600 font-bold px-4 py-2 text-2xl sm:text-3xl xl:text-5xl text-white flex justify-center items-center transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-500 "
+const colorOriginal = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform bg-transparent"
+const colorError = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform active:bg-red-700 rounded-md hover:bg-red-500"
+const colorGanador = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transform bg-green-600 rounded-md"
+const colorPerdedor = "opacity-[20%] z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transform"
 
-const Tablero = () => {
+const Tablero = ({fondo}) => {
   const [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
@@ -59,11 +60,20 @@ const Tablero = () => {
       
       if(myTablero[a].props?.jugador && myTablero[a].props?.jugador === myTablero[b].props?.jugador && myTablero[a].props?.jugador === myTablero[c].props?.jugador){
 
+        //Este bucle se encarga de pintar a las posiciones perdedoras
+        for(let indice = 0; indice < cuadros.length; indice++){
+          if(indice != a && indice != b && indice != c){
+            document.getElementById(indice).className = colorPerdedor
+          }
+        }
+        
+        //Con estas instrucciones le cambio el color a las posiciones ganadoras utilizando si ID
         document.getElementById(a).className = colorGanador
         document.getElementById(b).className = colorGanador
         document.getElementById(c).className = colorGanador
-        document.getElementById("tablero").className = "sm:h-screen w-full p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 pointer-events-none "
+        document.getElementById("tablero").className = "sm:h-screen h-[40vh] w-full p-[5%] grid grid-cols-3 justify-items-center content-around bg-blue-200 pointer-events-none "
         
+        //Retono el nombre del ganador del juego
         return myTablero[a].props?.jugador;
       }
     }
@@ -80,20 +90,21 @@ const Tablero = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2">
-      <div id="tablero" className="sm:h-screen w-full p-2 xl:p-5 grid grid-cols-3 gap-2 xl:gap-5 bg-blue-200 h-72 ">{/*Tablero responsivo */}
-      {
-        cuadros.map((item, indexItem) => {
-          return <Cuadro key={indexItem} 
-                         valor={item} 
-                         color={colorOriginal}
-                         cuadroRef = {aggRefs}
-                         id={indexItem}
-                         alHacerClick={() => pintaFigura(indexItem)} />
-        })
-      }
+    <div className="w-screen h-[100vh] sm:grid sm:grid-cols-2">
+      <img src={`../img/fondo.jpg`} className='object-cover absolute w-full sm:w-[50%] h-[40vh] sm:h-screen select-none border-4 border-zinc-900' />
+      <div id="tablero" className="sm:h-screen h-[40vh] w-full p-[5%] grid grid-cols-3 justify-items-center content-around bg-blue-200">{/*Tablero responsivo */}
+        {
+          cuadros.map((item, indexItem) => {
+            return <Cuadro key={indexItem} 
+                          valor={item} 
+                          color={colorOriginal}
+                          cuadroRef = {aggRefs}
+                          id={indexItem}
+                          alHacerClick={() => pintaFigura(indexItem)} />
+          })
+        }
       </div>
-      <div className="w-full flex">
+      <div className="w-full h-[60vh] flex">
         <div className="w-full z-10">
           <h1 className="mt-[10%] md:mt-[5%] lg:mt-[5%] w-full text-center mt-5 text-2xl md:text-xl lg:text-3xl font-bold font-ringbearer text-white">TOTITO</h1>
           <h1 className="w-full text-center mt-5 text-3xl lg:text-5xl font-bold font-ringbearer text-white">The Lord Of The Rings</h1>
@@ -106,7 +117,7 @@ const Tablero = () => {
             <h1 className="text-white font-bold italic text-[100%]">{jugador2}</h1>
           </div>
         </div>
-        <img className="h-full w-full sm:w-1/2 sm:h-screen object-cover absolute z-0" src="../img/lotr.jpg" />
+        <img className="w-full sm:w-1/2 h-[60vh] sm:h-screen object-cover absolute z-0" src={`../img/${fondo}.jpg`} />
         <Ganador ganador = {calcularGanador(cuadros)} />
       </div>
     </div>
