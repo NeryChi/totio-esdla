@@ -1,44 +1,68 @@
+import { useEffect } from 'react';
 import Ejercitos from './ejercitos';
 import { usarContexto } from './Context/valorJugadores';
+import { contextoAudio } from './Context/valorAudio';
+//import opening1 from '../../public/sounds/opening.mp3'
 
 const ejercitos = ['...', 'Rohan', 'Gondor', 'Mordor', 'Isengard']
+let visible = 'animate-spin-slow opacity-[100%] drop-shadow-md text-white text-2xl lg:text-3xl italic col-span-3 sm:col-span-1 sm:w-[80%] sm:justify-items-start'
 
 const Eleccion = ({cambioInterfaz}) => {
 
   let [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
+  const [sonidos, opening] = contextoAudio()
   
   const cambiarJugador = () => {
     setJugador1(document.getElementById('ejercitosUno').value)
     setJugador2(document.getElementById('ejercitosDos').value)
+    
   }
 
   const cambiarInterfaz = () => {
     if(jugador1 != '...' && jugador2 != '...'){
-      cambioInterfaz()
+      if(jugador1 != jugador2){
+        cambioInterfaz()
+        document.getElementById('opening').pause()
+        
+      }else{
+        document.getElementById('alerta').innerHTML = 'Elige ejercitos diferentes'
+      }
+      
     } else{
-      alert('Elige tus ejercitos')
+      document.getElementById('alerta').innerHTML = 'Elige a tus ejercitos'
     }
+  }
+
+  const limpiarAlerta = () => {
+    document.getElementById('alerta').innerHTML = ''
   }
 
   return(
     <div>
       <img className='h-screen w-screen object-cover absolute -z-10' src='../img/gollum.svg' />
-    <div className="grid grid-cols-2 w-screen h-screen bg-transparent justify-items-center content-around">
-      
-      {/*Se llama al componente Tablero */}
-      <h1 className='font-aniron grid col-span-2 flex justify-center text-white font-bold text-2xl text-center lg:text-5xl'>¡Elige a tus ejercitos precioso!</h1>
-      <div className="h-1/4 w-11/12 grid col-span-2 grid-cols-3 gap-2 justify-items-center">
-        <h1 className="text-white font-bold font-aniron text-2xl">Jugador 1</h1>
-        <Ejercitos  ejercitos = {ejercitos} 
-                    index="ejercitosUno" />
-        <h1 className="text-white font-bold font-aniron text-2xl">Jugador 2</h1>
-        <Ejercitos  ejercitos = {ejercitos} 
-                    index="ejercitosDos" />
+      <img className='w-screen h-screen object-cover absolute -z-10 opacity-25' src='../img/niebla.gif'/>
+      <div className="grid grid-cols-2 w-screen h-screen bg-transparent justify-items-center ">
+        <h1 className='mt-10 drop-shadow-md font-aniron grid col-span-2 flex justify-center text-white font-bold text-2xl text-center lg:text-5xl'>¡Elige a tus ejercitos precioso!</h1>
+        <div className="mt-[30vh] sm:mt-[10vh] lg:mt-[30vh] h-1/4 w-[90%] grid col-span-2 justify-items-center sm:justify-items-start sm:grid-cols-5 gap-2 ">
+          <h1 className="text-white font-bold font-aniron text-full lg:text-2xl">Jugador 1</h1>
+          <Ejercitos  ejercitos = {ejercitos} 
+                      index="ejercitosUno"
+                      limpiarAlerta = {() => limpiarAlerta()} />
+                      
+          <h1 className="text-white font-bold font-aniron text-full lg:text-2xl">Jugador 2</h1>
+          <Ejercitos  ejercitos = {ejercitos} 
+                      index="ejercitosDos"
+                      limpiarAlerta = {() => limpiarAlerta()} />
+          
+          
+        </div>
+        <h1 id='alerta' className={visible}></h1>
+        <button id='boton' onMouseUp={() => cambiarInterfaz()} onMouseDown={() => cambiarJugador()} className='grid col-span-2 flex justify-center bg-white py-2 w-[15vh] sm:w-[30vh] h-[6.5vh] sm:h-[10vh] rounded-md text-[2.5vh] sm:text-[4vh] font-bold'>Jugar →</button>
+      </div>
+      <audio id='opening' autoPlay loop src={opening}></audio>
     </div>
-      <button onMouseUp={() => cambiarInterfaz()} onMouseDown={() => cambiarJugador()} className='grid col-span-2 flex justify-center bg-white py-2 w-[25%] rounded-md text-2xl font-bold'>Jugar →</button>
-    </div>
-  </div>
   )
 }
+
 
 export default Eleccion

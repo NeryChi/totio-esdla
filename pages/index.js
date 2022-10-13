@@ -7,21 +7,35 @@ import { useState, useContext } from 'react';
 import Tablero from "./componentes/tablero";
 import Eleccion from './componentes/eleccion';
 import JugadorProvider from './componentes/Context/valorJugadores'
+import AudioProvider from './componentes/Context/valorAudio';
+import img from '../public/img/grabado.png'
+
 
 
 const Totito = () => {
 
-  const[interfaz, setInterfaz] = useState(<Eleccion cambioInterfaz={() => cambioInterfaz()} />)
+  const[interfaz, setInterfaz] = useState(
+    <div className='bg-zinc-900 w-screen h-screen flex justify-center items-center'>
+      <img className='w-screen h-screen object-cover opacity-[10%]' src='../img/niebla.gif'/>
+      <img onClick={() => eleccion()} className='cursor-pointer h-[30vh] hover:h-[35vh] duration-300 transform absolute animate-spin-slow z-10' src='../img/grabado.png' />
+    </div>
+  )
+
+  const eleccion = () => {
+    setInterfaz(<Eleccion cambioInterfaz={() => cambioInterfaz()} />)
+  }
 
   const cambioInterfaz = () => {
-    let fondos = ['lotr1', 'lotr2', 'lotr3', 'lotr4', 'lotr5', 'lotr6']
+    let fondos = ['lotr0', 'lotr1', 'lotr2', 'lotr3', 'lotr4', 'lotr5', 'lotr6', 'lotr7', 'lotr8', 'lotr9', 'lotr10']
     let rand = Math.floor(Math.random()*fondos.length)
     setInterfaz(<Tablero fondo = { fondos[rand] } />)
   }
 
   return (
     <JugadorProvider>
-      {interfaz}
+      <AudioProvider>
+        {interfaz}
+      </AudioProvider>
     </JugadorProvider>
   )
 }

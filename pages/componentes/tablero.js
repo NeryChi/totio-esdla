@@ -1,8 +1,9 @@
-import { useState, useRef, useContext } from "react"
+import { useState, useRef } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
 import Ganador from "./ganador"
 import { usarContexto } from './Context/valorJugadores';
+import { contextoAudio } from './Context/valorAudio';
 
 const colorOriginal = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform bg-transparent"
 const colorError = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform active:bg-red-700 rounded-md hover:bg-red-500"
@@ -11,6 +12,7 @@ const colorPerdedor = "opacity-[20%] z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] ou
 
 const Tablero = ({fondo}) => {
   const [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
+  const [sonidos] = contextoAudio()
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
 
@@ -24,6 +26,7 @@ const Tablero = ({fondo}) => {
   const pintaFigura = (indexItem) => {
     const misCuadritos = cuadros.slice()
     misCuadritos.splice(indexItem, 1, turno)
+    let rand = Math.floor(Math.random()*sonidos.length)
 
     //Utilizo este bucle para limpiar los colores de los botones con el estilo #colorError
     for(let index = 0; index < cuadros.length ; index++){
@@ -36,8 +39,10 @@ const Tablero = ({fondo}) => {
     } else{
       setCuadros(misCuadritos)
       if(turno.props?.jugador === jugador2){
+        new Audio(sonidos[rand]).play();
         setTurno(<Jugador jugador = {jugador1} />)
       } else{
+        new Audio(sonidos[rand]).play();
         setTurno(<Jugador jugador = {jugador2} />)
       }
     }
@@ -106,11 +111,11 @@ const Tablero = ({fondo}) => {
       </div>
       <div className="w-full h-[60vh] flex">
         <div className="w-full z-10">
-          <h1 className="mt-[10%] md:mt-[5%] lg:mt-[5%] w-full text-center mt-5 text-2xl md:text-xl lg:text-3xl font-bold font-ringbearer text-white">TOTITO</h1>
-          <h1 className="w-full text-center mt-5 text-3xl lg:text-5xl font-bold font-ringbearer text-white">The Lord Of The Rings</h1>
+          <h1 className="mt-[10%] md:mt-[5%] lg:mt-[5%] w-full drop-shadow-md text-center mt-5 text-2xl md:text-xl lg:text-3xl font-bold font-ringbearer text-white">TOTITO</h1>
+          <h1 className="w-full text-center mt-5 drop-shadow-md text-3xl lg:text-5xl font-bold font-ringbearer text-white">The Lord Of The Rings</h1>
           <div className="mt-[15%] md:mt-[10%] lg:mt-[20%] grid grid-cols-2 gap-5 justify-items-center">
-            <h1 className="text-white font-bold font-aniron text-[100%] lg:text-2xl">Jugador 1</h1>
-            <h1 className="text-white font-bold font-aniron text-[100%] lg:text-2xl">Jugador 2</h1>
+            <h1 className="text-white drop-shadow-md font-bold font-aniron text-[100%] lg:text-2xl">Jugador 1</h1>
+            <h1 className="text-white drop-shadow-md font-bold font-aniron text-[100%] lg:text-2xl">Jugador 2</h1>
             <Jugador jugador={jugador1} />
             <Jugador jugador={jugador2} />
             <h1 className="text-white font-bold italic text-[100%]">{jugador1}</h1>
