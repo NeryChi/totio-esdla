@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
 import Ganador from "./ganador"
@@ -12,9 +12,18 @@ const colorPerdedor = "opacity-[20%] z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] ou
 
 const Tablero = ({fondo}) => {
   const [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
-  const [sonidos] = contextoAudio()
+  const [sonidos, opening, canciones] = contextoAudio()
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
+
+  useEffect(() => {
+    //let cancion = new Audio(canciones[Math.floor(Math.random()*canciones.length)])
+    //cancion.play()
+
+    console.log(document.getElementById('song').getAttribute('src'))
+    document.getElementById('song').setAttribute('src') = canciones[0]
+    console.log(document.getElementById('song').getAttribute('src'))
+  }, [])
 
   //Utilizo el Hook useRef() para tener un control del estilo de mis componenetes directamente desde el Dom 
   //sin afectar a mis demas componentes. El parametro que se le pasa es en forma de arreglo porque necesito
@@ -96,6 +105,7 @@ const Tablero = ({fondo}) => {
 
   return (
     <div className="w-screen h-[100vh] sm:grid sm:grid-cols-2">
+      <audio id='song' src=''></audio>
       <img src={`../img/fondo.jpg`} className='object-cover absolute w-full sm:w-[50%] h-[40vh] sm:h-screen select-none border-4 border-zinc-900' />
       <div id="tablero" className="sm:h-screen h-[40vh] w-full p-[5%] grid grid-cols-3 justify-items-center content-around bg-blue-200">{/*Tablero responsivo */}
         {

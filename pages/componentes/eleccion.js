@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Ejercitos from './ejercitos';
 import { usarContexto } from './Context/valorJugadores';
 import { contextoAudio } from './Context/valorAudio';
