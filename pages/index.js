@@ -8,16 +8,13 @@ import Tablero from "./componentes/tablero";
 import Eleccion from './componentes/eleccion';
 import JugadorProvider from './componentes/Context/valorJugadores'
 import AudioProvider from './componentes/Context/valorAudio';
-import img from '../public/img/grabado.png'
-
-
 
 const Totito = () => {
 
   const[interfaz, setInterfaz] = useState(
     <div className='bg-zinc-900 w-screen h-screen flex justify-center items-center'>
-      <img className='w-screen h-screen object-cover opacity-[10%]' src='../img/niebla.gif'/>
-      <img onClick={() => eleccion()} className='cursor-pointer h-[30vh] hover:h-[35vh] duration-300 transform absolute animate-spin-slow z-10' src='../img/grabado.png' />
+      <img className='select-none w-screen h-screen object-cover opacity-[10%]' src='../img/niebla.gif'/>
+      <img onClick={() => eleccion()} className='select-none cursor-pointer h-[30vh] hover:h-[35vh] duration-300 transform absolute animate-spin-slow z-10' src='../img/grabado.png' />
     </div>
   )
 
