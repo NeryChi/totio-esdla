@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
 import Ganador from "./ganador"
-import { usarContexto } from './Context/valorJugadores';
-import { contextoAudio } from './Context/valorAudio';
+import { JugadorContext } from './Context/valorJugadores';
+import { AudioContexto } from './Context/valorAudio';
 
 const colorOriginal = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform bg-transparent"
 const colorError = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform active:bg-red-700 rounded-md hover:bg-red-500"
@@ -11,8 +11,8 @@ const colorGanador = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-
 const colorPerdedor = "opacity-[20%] z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transform"
 
 const Tablero = ({fondo}) => {
-  const [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
-  const [sonidos, opening, canciones] = contextoAudio()
+  const [jugador1, setJugador1, jugador2, setJugador2] = useContext(JugadorContext)
+  const [sonidos, opening, canciones, alertas] = useContext(AudioContexto)
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
   let cancion

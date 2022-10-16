@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const JugadorContext = createContext()
-export const usarContexto = () => useContext(JugadorContext)
 
 const JugadorProvider = ({ children }) => {
 

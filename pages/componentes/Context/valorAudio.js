@@ -1,4 +1,4 @@
-import { createContext, useContext} from "react";
+import { createContext } from "react";
 import sonido0 from '../../../public/sounds/0.mp3'
 import sonido1 from '../../../public/sounds/1.mp3'
 import sonido2 from '../../../public/sounds/2.mp3'
@@ -13,7 +13,6 @@ import eleccion from '../../../public/sounds/eleccion.mp3'
 
 
 export const AudioContexto = createContext()
-export const contextoAudio = () => useContext(AudioContexto)
 
 const AudioProvider = ({ children }) => {
 

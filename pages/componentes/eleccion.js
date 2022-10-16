@@ -1,6 +1,7 @@
 import Ejercitos from './ejercitos';
-import { usarContexto } from './Context/valorJugadores';
-import { contextoAudio } from './Context/valorAudio';
+import { useContext } from 'react';
+import { JugadorContext } from './Context/valorJugadores';
+import { AudioContexto } from './Context/valorAudio';
 
 const ejercitos = ['...', 'Rohan', 'Gondor', 'Mordor', 'Isengard']
 let visible = 'animate-spin-slow opacity-[100%] select-none drop-shadow-md text-white text-2xl lg:text-3xl italic col-span-3 sm:col-span-1 sm:w-[80%] sm:justify-items-start'
@@ -10,8 +11,8 @@ const botonError = 'grid col-span-2 flex justify-center bg-red-600 py-2 w-[15vh]
 
 const Eleccion = ({cambioInterfaz}) => {
 
-  let [jugador1, setJugador1, jugador2, setJugador2] = usarContexto()
-  const [sonidos, opening, canciones, alertas] = contextoAudio()
+  let [jugador1, setJugador1, jugador2, setJugador2] = useContext(JugadorContext)
+  const [sonidos, opening, canciones, alertas] = useContext(AudioContexto)
   
   const cambiarJugador = () => {
     setJugador1(document.getElementById('ejercitosUno').value)
