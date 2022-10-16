@@ -9,9 +9,6 @@ module.exports = {
       fontFamily: {
         'ringbearer': ['RINGBEARER', 'cursive'],
         'aniron': ['ANIRON', 'cursive']
-      },
-      animation: {
-        'spin-slow': 'pulse 3s  infinite',
       }
     },
   },

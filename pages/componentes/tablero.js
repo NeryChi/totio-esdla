@@ -9,19 +9,20 @@ const colorOriginal = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select
 const colorError = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform active:bg-red-700 rounded-md hover:bg-red-500"
 const colorGanador = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transform bg-green-600 rounded-md"
 const colorPerdedor = "opacity-[20%] z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transform"
+let turnos = 0
 
 const Tablero = ({fondo}) => {
   const [jugador1, setJugador1, jugador2, setJugador2] = useContext(JugadorContext)
   const [sonidos, opening, canciones, alertas] = useContext(AudioContexto)
   const [cuadros, setCuadros] = useState(Array(9).fill([]))
   const [turno, setTurno] = useState(<Jugador jugador = {jugador1} />)
-  let cancion
+  
 
   useEffect(() => {
-    cancion = new Audio(canciones[Math.floor(Math.random()*canciones.length)])
+    let cancion = new Audio(canciones[Math.floor(Math.random()*canciones.length)])
     cancion.loop = true
     cancion.play()
-  }, [])
+  })
 
   //Utilizo el Hook useRef() para tener un control del estilo de mis componenetes directamente desde el Dom 
   //sin afectar a mis demas componentes. El parametro que se le pasa es en forma de arreglo porque necesito
@@ -87,8 +88,11 @@ const Tablero = ({fondo}) => {
         
         //Retono el nombre del ganador del juego
         return myTablero[a].props?.jugador;
+      } else if(turnos >= cuadros.length){
+        return 'empate'
       }
     }
+    turnos++
     return ""
   }
 
@@ -103,7 +107,7 @@ const Tablero = ({fondo}) => {
 
   return (
     <div className="w-screen h-[100vh] sm:grid sm:grid-cols-2">
-      <img src={`../img/fondo.jpg`} className='object-cover absolute w-full sm:w-[50%] h-[40vh] sm:h-screen select-none border-4 border-zinc-900' />
+      <img alt='fondo' src={`../img/fondo.jpg`} className='object-cover absolute w-full sm:w-[50%] h-[40vh] sm:h-screen select-none border-4 border-zinc-900' />
       <div id="tablero" className="sm:h-screen h-[40vh] w-full p-[5%] grid grid-cols-3 justify-items-center content-around bg-blue-200">{/*Tablero responsivo */}
         {
           cuadros.map((item, indexItem) => {
@@ -129,7 +133,7 @@ const Tablero = ({fondo}) => {
             <h1 className="text-white font-bold italic text-[100%]">{jugador2}</h1>
           </div>
         </div>
-        <img className="w-full sm:w-1/2 h-[60vh] sm:h-screen object-cover absolute z-0" src={`../img/${fondo}.jpg`} />
+        <img alt="wallpaper" className="w-full sm:w-1/2 h-[60vh] sm:h-screen object-cover absolute z-0" src={`../img/${fondo}.jpg`} />
         <Ganador ganador = {calcularGanador(cuadros)} />
       </div>
     </div>

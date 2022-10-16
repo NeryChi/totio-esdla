@@ -1,6 +1,6 @@
 const Jugador = ({jugador}) => {
   return(
-    <img className="w-2/5" id={jugador} src={`../img/${jugador}.png`} />
+    <img alt="figura-jugador" className="w-[30%]" id={jugador} src={`../img/${jugador}.png`} />
   )
 }
 
