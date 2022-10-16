@@ -4,10 +4,10 @@ import styles from '../styles/Home.module.css'
 
 /*Se importan los componentes y Hooks necesarios*/
 import { useState, useContext } from 'react';
-import Tablero from "./componentes/tablero";
-import Eleccion from './componentes/eleccion';
-import JugadorProvider from './componentes/Context/valorJugadores'
-import AudioProvider from './componentes/Context/valorAudio';
+import Tablero from "../components/tablero";
+import Eleccion from '../components/eleccion';
+import JugadorProvider from '../context/valorJugadores'
+import AudioProvider from '../context/valorAudio';
 
 const Totito = () => {
 

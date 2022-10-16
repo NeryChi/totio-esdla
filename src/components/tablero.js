@@ -2,8 +2,8 @@ import { useState, useRef, useEffect, useContext } from "react"
 import Cuadro from "./cuadro"
 import Jugador from "./jugador"
 import Ganador from "./ganador"
-import { JugadorContext } from './Context/valorJugadores';
-import { AudioContexto } from './Context/valorAudio';
+import { JugadorContext } from '../context/valorJugadores';
+import { AudioContexto } from '../context/valorAudio';
 
 const colorOriginal = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform bg-transparent"
 const colorError = "z-10 h-[10vh] sm:h-[23vh] w-[75%] p-[8%] outline-0 select-none flex justify-center items-center transition-colors duration-300 transform active:bg-red-700 rounded-md hover:bg-red-500"

@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { JugadorContext } from "./Context/valorJugadores"
+import { JugadorContext } from "../context/valorJugadores"
 import Jugador from "./jugador"
 
 const Ganador = ({ganador}) => {

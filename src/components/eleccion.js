@@ -1,7 +1,7 @@
 import Ejercitos from './ejercitos';
 import { useContext } from 'react';
-import { JugadorContext } from './Context/valorJugadores';
-import { AudioContexto } from './Context/valorAudio';
+import { JugadorContext } from '../context/valorJugadores';
+import { AudioContexto } from '../context/valorAudio';
 
 const ejercitos = ['...', 'Rohan', 'Gondor', 'Mordor', 'Isengard']
 let visible = 'animate-spin-slow opacity-[100%] select-none drop-shadow-md text-white text-2xl lg:text-3xl italic col-span-3 sm:col-span-1 sm:w-[80%] sm:justify-items-start'
