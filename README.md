@@ -1,16 +1,35 @@
 ## Version landscape de TOTITO The Lord Of The Rings
+
+Pantalla de bienvenida
 ![](public/img/screen/screen1.png)
+
+Eleccion de jugadores
 ![](public/img/screen/screen2.png)
+
+¡Advertencia! Se necesitan dos jugadores
 ![](public/img/screen/screen3.png)
+
+¡Advertencia! no se pueden elegir dos ejercitos a la vez
 ![](public/img/screen/screen4.png)
-![](public/img/screen/screen5.png)
+
+¡Esto es un empate!
 ![](public/img/screen/screen6.png)
 
 ## Version portraint de TOTITO The Lord Of The Rings
+
+<div className='justify-center'>
+¡Advertencia! Se necesita elegir jugadores
 ![](public/img/screen/screen7.png)
+
+¡Advertencia! no se pueden elegir dos ejercitos a la vez
 ![](public/img/screen/screen8.png)
+
+Juego en curso
 ![](public/img/screen/screen9.png)
+
+¡Juego ganado!
 ![](public/img/screen/screen10.png)
+</div>
 
 
 
