@@ -40,8 +40,7 @@ const Eleccion = ({cambioInterfaz}) => {
   }
 
   const limpiarAlerta = () => {
-    console.log('hola')
-    new Audio(alertas[2]).play()
+    new Audio(alertas[0]).play()
     document.getElementById('alerta').innerHTML = ''
     document.getElementById('boton').className = botonNormal
   }
