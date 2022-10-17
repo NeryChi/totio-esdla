@@ -22,7 +22,7 @@ const Tablero = ({fondo}) => {
     let cancion = new Audio(canciones[Math.floor(Math.random()*canciones.length)])
     cancion.loop = true
     cancion.play()
-  })
+  },[])
 
   //Utilizo el Hook useRef() para tener un control del estilo de mis componenetes directamente desde el Dom 
   //sin afectar a mis demas componentes. El parametro que se le pasa es en forma de arreglo porque necesito
