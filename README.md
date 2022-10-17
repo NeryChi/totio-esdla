@@ -15,21 +15,7 @@ Eleccion de jugadores
 ¡Esto es un empate!
 ![](public/img/screen/screen6.png)
 
-## Version portraint de TOTITO The Lord Of The Rings
-
-<div className='justify-center'>
-¡Advertencia! Se necesita elegir jugadores
-![](public/img/screen/screen7.png)
-
-¡Advertencia! no se pueden elegir dos ejercitos a la vez
-![](public/img/screen/screen8.png)
-
-Juego en curso
-![](public/img/screen/screen9.png)
-
-¡Juego ganado!
-![](public/img/screen/screen10.png)
-</div>
+El videojuego TOTITO The Lord Of The Rings es una aplicacion de una sola pagina desarrollada utilizando React, NextJS, Tailwind y resoponsive design.
 
 
 
