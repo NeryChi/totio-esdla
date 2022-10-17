@@ -5,10 +5,10 @@
 
 @font-face {
     font-family: 'RINGBEARER';
-    src: url('/fonts/ringbearer.TTF');
+    src: url('/fonts/ringbearer.woff2');
 }
 
 @font-face {
     font-family: 'ANIRON';
-    src: url('/fonts/aniron.TTF');
+    src: url('/fonts/aniron.woff2');
 }
