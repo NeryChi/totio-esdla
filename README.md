@@ -12,7 +12,7 @@ Eleccion de jugadores
 ¡Advertencia! Se necesitan dos jugadores
 ![](public/img/screen/screen3.png)
 
-¡Advertencia! no se pueden elegir dos ejercitos a la vez
+¡Advertencia! ambos jugadores no pueden elegir un mismo ejercito
 ![](public/img/screen/screen4.png)
 
 ¡Esto es un empate!
