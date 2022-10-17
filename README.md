@@ -1,6 +1,6 @@
 ## Jugar a TOTITO The Lord Of The Rings
 
-[https://totio-esdla.vercel.app/]JUGAR
+[JUGAR](https://totio-esdla.vercel.app/)
 LINK: https://totio-esdla.vercel.app/
 
 Pantalla de bienvenida
