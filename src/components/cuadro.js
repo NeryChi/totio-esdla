@@ -4,7 +4,7 @@ const Cuadro = ({valor, alHacerClick, color, cuadroRef, id}) => {
             id={id}
             ref={cuadroRef}
             onClick={() => alHacerClick()}>
-            <img alt="base-jugador" src='../img/tablero.png' className='absolute h-full select-none -z-10' />
+            <img alt="base-jugador" src='../img/tablero.webp' className='absolute h-full select-none -z-10' />
             {valor}
     </button>
   )

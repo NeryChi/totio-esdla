@@ -1,5 +1,5 @@
-import Ejercitos from './ejercitos';
 import { useContext } from 'react';
+import Ejercitos from './ejercitos';
 import { JugadorContext } from '../context/valorJugadores';
 import { AudioContexto } from '../context/valorAudio';
 
@@ -17,7 +17,6 @@ const Eleccion = ({cambioInterfaz}) => {
   const cambiarJugador = () => {
     setJugador1(document.getElementById('ejercitosUno').value)
     setJugador2(document.getElementById('ejercitosDos').value)
-    
   }
 
   const cambiarInterfaz = () => {
@@ -41,6 +40,7 @@ const Eleccion = ({cambioInterfaz}) => {
   }
 
   const limpiarAlerta = () => {
+    console.log('hola')
     new Audio(alertas[2]).play()
     document.getElementById('alerta').innerHTML = ''
     document.getElementById('boton').className = botonNormal
@@ -48,8 +48,8 @@ const Eleccion = ({cambioInterfaz}) => {
 
   return(
     <div>
-      <img alt='fondo-gollum' className='h-screen w-screen object-cover absolute -z-10' src='../img/gollum.svg' />
-      <img alt='niebla' className='w-screen h-screen object-cover absolute -z-10 opacity-25' src='../img/niebla.gif'/>
+      <img alt='fondo-gollum' className='h-screen w-screen object-cover absolute -z-10' src='../img/gollum.webp' />
+      <img alt='niebla' className='w-screen h-screen object-cover absolute -z-10 opacity-25' src='../img/niebla.webp'/>
       <div className="grid grid-cols-2 w-screen h-screen bg-transparent justify-items-center ">
         <h1 className='select-none mt-10 drop-shadow-md font-aniron grid col-span-2 flex justify-center text-white font-bold text-2xl text-center lg:text-5xl'>¡Elige a tus ejercitos precioso!</h1>
         <div className="mt-[30vh] sm:mt-[10vh] lg:mt-[30vh] h-1/4 w-[90%] grid col-span-2 justify-items-center sm:justify-items-start sm:grid-cols-5 gap-2 ">

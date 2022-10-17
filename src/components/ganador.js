@@ -19,7 +19,7 @@ const Ganador = ({ganador}) => {
                               <Jugador jugador={ganador} />
                           </div>
                           <div className="w-full  flex justify-center">
-                            <img alt="figura-ganador" src='../img/reload.png' className="w-[10%] hover:cursor-pointer" onClick={recargar} />
+                            <img alt="figura-ganador" src='../img/reload.webp' className="w-[10%] hover:cursor-pointer" onClick={recargar} />
                           </div>
                         </div>
     }
@@ -32,7 +32,7 @@ const Ganador = ({ganador}) => {
                             <Jugador jugador={jugador2} />
                           </div>
                           <div className="w-full  flex justify-center">
-                            <img alt="figura-ganador" src='../img/reload.png' className="w-[10%] hover:cursor-pointer" onClick={recargar} />
+                            <img alt="figura-ganador" src='../img/reload.webp' className="w-[10%] hover:cursor-pointer" onClick={recargar} />
                           </div>
                         </div>
     }

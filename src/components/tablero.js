@@ -107,7 +107,7 @@ const Tablero = ({fondo}) => {
 
   return (
     <div className="w-screen h-[100vh] sm:grid sm:grid-cols-2">
-      <img alt='fondo' src={`../img/fondo.jpg`} className='object-cover absolute w-full sm:w-[50%] h-[40vh] sm:h-screen select-none border-4 border-zinc-900' />
+      <img alt='fondo' src={`../img/fondo.webp`} className='object-cover absolute w-full sm:w-[50%] h-[40vh] sm:h-screen select-none border-4 border-zinc-900' />
       <div id="tablero" className="sm:h-screen h-[40vh] w-full p-[5%] grid grid-cols-3 justify-items-center content-around bg-blue-200">{/*Tablero responsivo */}
         {
           cuadros.map((item, indexItem) => {
@@ -133,7 +133,7 @@ const Tablero = ({fondo}) => {
             <h1 className="text-white font-bold italic text-[100%]">{jugador2}</h1>
           </div>
         </div>
-        <img alt="wallpaper" className="w-full sm:w-1/2 h-[60vh] sm:h-screen object-cover absolute z-0" src={`../img/${fondo}.jpg`} />
+        <img alt="wallpaper" className="w-full sm:w-1/2 h-[60vh] sm:h-screen object-cover absolute z-0" src={`../img/${fondo}.webp`} />
         <Ganador ganador = {calcularGanador(cuadros)} />
       </div>
     </div>
