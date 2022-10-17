@@ -1,4 +1,7 @@
-## Version landscape de TOTITO The Lord Of The Rings
+## Jugar a TOTITO The Lord Of The Rings
+
+[https://totio-esdla.vercel.app/]JUGAR
+LINK: https://totio-esdla.vercel.app/
 
 Pantalla de bienvenida
 ![](public/img/screen/screen1.png)
