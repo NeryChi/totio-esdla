@@ -1,7 +1,16 @@
-Version Pc de TOTITO The Lord Of The Rings
+## Version landscape de TOTITO The Lord Of The Rings
 ![](public/img/screen/screen1.png)
 ![](public/img/screen/screen2.png)
 ![](public/img/screen/screen3.png)
+![](public/img/screen/screen4.png)
+![](public/img/screen/screen5.png)
+![](public/img/screen/screen6.png)
+
+## Version portraint de TOTITO The Lord Of The Rings
+![](public/img/screen/screen7.png)
+![](public/img/screen/screen8.png)
+![](public/img/screen/screen9.png)
+![](public/img/screen/screen10.png)
 
 
 
