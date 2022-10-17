@@ -18,4 +18,4 @@ Eleccion de jugadores
 ¡Esto es un empate!
 ![](public/img/screen/screen6.png)
 
-El videojuego TOTITO The Lord Of The Rings es una aplicacion de una sola pagina desarrollada utilizando React, NextJS, Tailwind y resoponsive design.
+El videojuego TOTITO The Lord Of The Rings es una aplicacion de una sola pagina desarrollada utilizando React, NextJS, Tailwind y responsive design.
