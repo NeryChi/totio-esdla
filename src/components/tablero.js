@@ -45,6 +45,7 @@ const Tablero = ({fondo}) => {
     if(cuadros[indexItem] != ''){
       cuadroRef.current[indexItem].className = colorError
     } else{
+      turnos++
       setCuadros(misCuadritos)
       if(turno.props?.jugador === jugador2){
         new Audio(sonidos[rand]).play();
@@ -57,6 +58,7 @@ const Tablero = ({fondo}) => {
   }
 
   const calcularGanador = (myTablero) => {
+    
     const jugadasGanadoras = [
       [0, 1, 2],
       [3, 4, 5],
@@ -70,7 +72,7 @@ const Tablero = ({fondo}) => {
 
     for(let indiceJugada = 0; indiceJugada < jugadasGanadoras.length; indiceJugada++){
       const [a, b, c] = jugadasGanadoras[indiceJugada];
-      
+
       if(myTablero[a].props?.jugador && myTablero[a].props?.jugador === myTablero[b].props?.jugador && myTablero[a].props?.jugador === myTablero[c].props?.jugador){
 
         //Este bucle se encarga de pintar a las posiciones perdedoras
@@ -88,12 +90,14 @@ const Tablero = ({fondo}) => {
         
         //Retono el nombre del ganador del juego
         return myTablero[a].props?.jugador;
-      } else if(turnos >= cuadros.length){
-        return 'empate'
-      }
+      } 
+    } 
+    console.log(turnos + ', '+ cuadros.length)
+    if(turnos === cuadros.length){
+      return 'empate'
+    } else{
+      return ""
     }
-    turnos++
-    return ""
   }
 
   //Con esta funcion guardo mis referencias en un array cada vez que se crea un componente
